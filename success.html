@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Success</title>
+</head>
+<body style="text-align:center; font-family: Arial;">
+  <h2>🎉 Payment Successful!</h2>
+  <p id="payment-status">Fetching your payment details...</p>
+
+  <script>
+    // Read from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentId = urlParams.get('razorpay_payment_id');
+    const orderId = urlParams.get('razorpay_order_id');
+
+    if (paymentId) {
+      document.getElementById("payment-status").innerHTML =
+        `✅ Payment ID: <b>${paymentId}</b><br>
+         📦 Order ID: <b>${orderId}</b>`;
+    } else {
+      document.getElementById("payment-status").innerHTML =
+        `⚠️ Payment ID not found.`;
+    }
+  </script>
+</body>
+</html>
